@@ -1,0 +1,22 @@
+{
+  "name": "micro-frontend-module-federation-boilerplate",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "host-app",
+    "remote-app-1",
+    "remote-app-2",
+    "shared"
+  ],
+  "scripts": {
+    "start": "concurrently \"npm run start:host\" \"npm run start:remote1\" \"npm run start:remote2\"",
+    "start:host": "npm --workspace=host-app run start",
+    "start:remote1": "npm --workspace=remote-app-1 run start",
+    "start:remote2": "npm --workspace=remote-app-2 run start",
+    "build": "npm --workspaces run build",
+    "type-check": "npm --workspaces run type-check"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
